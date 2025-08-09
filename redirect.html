@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Redirecting...</title>
+<meta http-equiv="refresh" content="0; url=" id="redir">
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const link = params.get('link');
+    if (link) {
+        window.location.href = link; // моментальный переход
+    }
+</script>
+</head>
+<body style="background:black;color:white;display:flex;align-items:center;justify-content:center;height:100vh;">
+    Перенаправление...
+</body>
+</html>
