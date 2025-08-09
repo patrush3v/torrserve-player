@@ -5,16 +5,24 @@
 <title>Online Player</title>
 </head>
 <body style="background:black;margin:0;display:flex;justify-content:center;align-items:center;height:100vh;">
-<video id="video" controls autoplay style="max-width:100%;max-height:100%;">
-    <source id="src" type="video/mp4">
-    Ваш браузер не поддерживает видео.
-</video>
+<video id="video" controls autoplay style="max-width:100%;max-height:100%;" crossorigin="anonymous"></video>
+
 <script>
     const urlParams = new URLSearchParams(window.location.search);
     const link = urlParams.get('link');
     if (link) {
-        document.getElementById('src').src = link;
-        document.getElementById('video').load();
+        const video = document.getElementById('video');
+        const source = document.createElement('source');
+        source.src = link;
+        if (link.endsWith(".m3u") || link.endsWith(".m3u8")) {
+            source.type = "application/x-mpegURL";
+        } else if (link.endsWith(".ts")) {
+            source.type = "video/mp2t";
+        } else {
+            source.type = "video/mp4";
+        }
+        video.appendChild(source);
+        video.load();
     }
 </script>
 </body>
