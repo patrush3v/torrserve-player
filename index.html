@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Открыть в VLC</title>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const target = params.get("u");
+  if (target) {
+    window.location.href = "vlc://" + target.replace(/^https?:\/\//, "");
+  } else {
+    document.body.innerHTML = "<h2>Нет ссылки для VLC</h2>";
+  }
+</script>
+</head>
+<body>
+<p>Открываю VLC...</p>
+</body>
+</html>
